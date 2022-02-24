@@ -16,10 +16,11 @@ gcloud iam service-accounts create $service_acct
 
 srv_acc=$(gcloud iam service-accounts list | grep $service_acct | awk {'print $2'})
 
-gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:$srv_acc --role=roles/pubsub.publisher \n
-gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:$srv_acc --role=roles/bigquery.admin\n
-gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:$srv_acc --role=roles/storage.admin\n
+gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:$srv_acc --role=roles/pubsub.publisher
 
+gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:$srv_acc --role=roles/bigquery.admin
+
+gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:$srv_acc --role=roles/storage.admin
 
 ## setp 2
 
