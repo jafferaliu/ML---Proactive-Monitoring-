@@ -12,6 +12,8 @@ export service_acct="server account name "
 ## Step 1 
 Create Service account and assing roles 
 
+gcloud config set project $PROJECT_ID
+
 gcloud iam service-accounts create $service_acct
 
 srv_acc=$(gcloud iam service-accounts list | grep $service_acct | awk {'print $2'})
@@ -25,8 +27,6 @@ gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:$srv_
 ## setp 2
 
 create pub/sub topic 
-
-gcloud config set project $PROJECT_ID
 
 gcloud pubsub topics create $TOPIC_ID
 
