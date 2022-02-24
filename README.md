@@ -24,6 +24,8 @@ gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:$srv_
 
 gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:$srv_acc --role=roles/storage.admin
 
+gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:$srv_acc --role=roles/storage.legacyBucketWriter
+
 ## setp 2
 
 create pub/sub topic 
