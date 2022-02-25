@@ -52,3 +52,19 @@ gcloud dataflow jobs run ps-to-bq-aimlproject \
 --gcs-location gs://dataflow-templates-us-central1/latest/PubSub_to_BigQuery \
 --region us-central1 --staging-location gs://$PROJECT_ID/temp \
 --parameters inputTopic=projects/$PROJECT_ID/topics/$TOPIC_ID,outputTableSpec=$PROJECT_ID:$PROJECT_ID_bq.dfdata
+
+## Setp 5 
+
+Create Docker image 
+
+cd docker 
+gcloud builds submit --tag gcr.io/${GOOGLE_CLOUD_PROJECT}/df-data
+
+## Setp 6
+run the docker 
+
+
+gcloud auth activate-service-account --project=$PROJECT_ID --key-file=service-account.json 
+gcloud auth configure-docker
+
+docker pull gcr.io/$PROJECT_ID/df-data:latest && docker run -it gcr.io/$PROJECT_ID/df-data:latest
