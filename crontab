@@ -1,0 +1,2 @@
+*/30 * * * * sh /root/check_flask.sh > /dev/null
+*/60 * * * * /usr/bin/python -W ignore /root/get_token.py > /dev/null 2>&1
